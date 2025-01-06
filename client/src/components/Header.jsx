@@ -1,6 +1,36 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import UserContext from "../context/UserContext";
 
 const Header = () => {
+    // get authUser from userContext
+    const { authUser } = useContext(UserContext);
+
+    // local SignedIn component
+    const SignedIn = () => {
+        return (
+            <ul className="header--signedin">
+                <li>Welcome, {authUser?.firstName} {authUser?.lastName}!</li>
+                <li><Link to="signout">Sign Out</Link></li>
+            </ul>
+        )
+    }
+
+    // local SignedOut component
+    const SignedOut = () => {
+        return (
+            <ul className="header--signedout">
+                <li>
+                    <Link to="/signup">Sign Up</Link>
+                </li>
+                <li>
+                    <Link to="/signin">Sign In</Link>
+                </li>
+            </ul>
+        )
+    }
+
+    // return/render below content
     return (
         <header>
             <div className="wrap header--flex">
@@ -10,14 +40,7 @@ const Header = () => {
                     </Link>
                 </h1>
                 <nav>
-                    <ul className="header--signedout">
-                        <li>
-                            <a href="sign-up.html">Sign Up</a>
-                        </li>
-                        <li>
-                            <a href="sign-in.html">Sign In</a>
-                        </li>
-                    </ul>
+                   { authUser ? <SignedIn /> : <SignedOut />}
                 </nav>
             </div>
         </header>
