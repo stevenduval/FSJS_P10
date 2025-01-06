@@ -1,8 +1,8 @@
-import { useContext, useRef, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { api } from '../utils/apiHelper';
+import { useContext, useRef, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { api } from "../utils/apiHelper";
 import UserContext from "../context/UserContext";
-import ValidationErrors from './ValidationErrors';
+import ValidationErrors from "./ValidationErrors";
 
 const UserSignUp = () => {
     // reference to useNavigate hook
@@ -35,18 +35,18 @@ const UserSignUp = () => {
 
         try {
             // POST/create new user
-            const response = await api({ path: 'users', method: 'POST', body });
+            const response = await api({ path: "users", method: "POST", body });
             // if everything is as expected
             if (response.status === 201) {
                 // sign the user in via User Context signIn action
                 await actions.signIn({ emailAddress: body.emailAddress, password: body.password });
                 // navigate to home page 
                 navigate("/", { replace: true })
-                // if validation error, await response and set errors 
+            // if validation error, await response and set errors 
             } else if (response.status === 400) {
                 const data = await response.json();
                 setErrors(data.errors);
-                // otherwise send to error route
+            // otherwise send to error route
             } else {
                 navigate("/error", { replace: true });
             }

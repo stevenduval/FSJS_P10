@@ -40,7 +40,7 @@ const Header = () => {
                     </Link>
                 </h1>
                 <nav>
-                   { authUser ? <SignedIn /> : <SignedOut />}
+                    {authUser ? <SignedIn /> : <SignedOut />}
                 </nav>
             </div>
         </header>

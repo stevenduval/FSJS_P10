@@ -15,14 +15,14 @@ const Courses = () => {
     // api call to retreive Courses
     const fetchData = async () => {
         try {
-             // GET all courses
+            // GET all courses
             const response = await api({ path: "courses", method: "GET" });
             // if everything is as expected, await response and set course data
-            if ( response.status === 200 ) { 
+            if (response.status === 200) {
                 const coursesData = await response.json();
                 setCourses(coursesData.courses);
-             // if not found, send to not found route    
-            } else if ( response.status === 404 ) {
+            // if not found, send to not found route    
+            } else if (response.status === 404) {
                 navigate("/notfound", { replace: true });
             // otherwise send to error route
             } else {

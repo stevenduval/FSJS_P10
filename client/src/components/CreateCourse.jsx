@@ -1,8 +1,8 @@
-import { useContext, useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { api } from '../utils/apiHelper';
+import { useContext, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { api } from "../utils/apiHelper";
 import UserContext from "../context/UserContext";
-import ValidationErrors from './ValidationErrors';
+import ValidationErrors from "./ValidationErrors";
 
 const CreateCourse = () => {
     // reference to useNavigate hook
@@ -10,7 +10,7 @@ const CreateCourse = () => {
 
     // get authUser from userContext
     const { authUser } = useContext(UserContext);
-   
+
     // set refs for FormData
     const title = useRef(null);
     const description = useRef(null);
@@ -36,10 +36,10 @@ const CreateCourse = () => {
 
         try {
             // POST new course
-            const response = await api({ path: 'courses', method: 'POST', body, credentials: authUser });
+            const response = await api({ path: "courses", method: "POST", body, credentials: authUser });
             // if everything is as expected, redirect to location given via response header
             if (response.status === 201) {
-                navigate(response.headers.get('Location'), { replace: true });
+                navigate(response.headers.get("Location"), { replace: true });
             // if validation error, await response and set errors    
             } else if (response.status === 400) {
                 const data = await response.json();
@@ -49,9 +49,9 @@ const CreateCourse = () => {
                 navigate("/error", { replace: true })
             }
         } catch (error) {
-           // if any other error, log and send to error route
-           console.log("Error:", error);
-           navigate("/error", { replace: true });
+            // if any other error, log and send to error route
+            console.log("Error:", error);
+            navigate("/error", { replace: true });
         }
     }
 

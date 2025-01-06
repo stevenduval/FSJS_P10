@@ -18,18 +18,18 @@ const App = () => {
         <>
             <Header />
             <Routes>
-                <Route path="/" element={ <Courses /> } />
-                <Route path="courses/:id" element={ <CourseDetail /> } />
-                <Route path="signin" element={ <UserSignIn /> } />
-                <Route path="signup" element={ <UserSignUp /> } />
-                <Route path="signout" element={ <UserSignOut /> } />
-                <Route element={ <PrivateRoute /> } >
-                    <Route path="courses/create" element={ <CreateCourse /> } />
-                    <Route path="courses/:id/update" element={ <UpdateCourse /> } />
+                <Route path="/" element={<Courses />} />
+                <Route path="courses/:id" element={<CourseDetail />} />
+                <Route path="signin" element={<UserSignIn />} />
+                <Route path="signup" element={<UserSignUp />} />
+                <Route path="signout" element={<UserSignOut />} />
+                <Route element={<PrivateRoute />} >
+                    <Route path="courses/create" element={<CreateCourse />} />
+                    <Route path="courses/:id/update" element={<UpdateCourse />} />
                 </Route>
-                <Route path="forbidden" element={ <Forbidden /> } />
-                <Route path="error" element={ <UnhandledError/>} />
-                <Route path="*" element={ <NotFound /> } />
+                <Route path="forbidden" element={<Forbidden />} />
+                <Route path="error" element={<UnhandledError />} />
+                <Route path="*" element={<NotFound />} />
             </Routes>
         </>
     )

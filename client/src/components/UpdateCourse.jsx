@@ -44,10 +44,10 @@ const UpdateCourse = () => {
                 if (authUser?.id !== courseData.courses[0].userId) { navigate("/forbidden", { replace: true }); }
                 // set course data
                 setCourse(courseData.courses[0]);
-                // if not found, send to not found route
+            // if not found, send to not found route
             } else if (response.status === 404) {
                 navigate("/notfound", { replace: true });
-                // otherwise send to error route
+            // otherwise send to error route
             } else {
                 navigate("/error", { replace: true })
             }
@@ -83,18 +83,18 @@ const UpdateCourse = () => {
 
         try {
             // PUT/update course
-            const response = await api({ path: `courses/${courseId}`, method: 'PUT', body, credentials: authUser });
+            const response = await api({ path: `courses/${courseId}`, method: "PUT", body, credentials: authUser });
             // if everything is as expected, redirect to course that was updated
             if (response.status === 204) {
                 navigate(`/courses/${courseId}`, { replace: true });
-                // if validation error, await response and set errors 
+            // if validation error, await response and set errors 
             } else if (response.status === 400) {
                 const data = await response.json();
                 setErrors(data.errors);
-                // if forbidden to update, redirect to forbidden path
+            // if forbidden to update, redirect to forbidden path
             } else if (response.status === 403) {
-                navigate('/forbidden', { replace: true });
-                // otherwise send to error route
+                navigate("/forbidden", { replace: true });
+            // otherwise send to error route
             } else {
                 navigate("/error", { replace: true });
             }

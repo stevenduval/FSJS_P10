@@ -2,7 +2,7 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { api } from "../utils/apiHelper";
 import UserContext from "../context/UserContext";
-import Markdown from 'react-markdown'
+import Markdown from "react-markdown"
 
 const CourseDetail = () => {
     // ref for useEffect to ensure it does not execute on re-render
@@ -60,14 +60,14 @@ const CourseDetail = () => {
     const handleDelete = async () => {
         try {
             // DELETE current course are on
-            const response = await api({ path: `courses/${courseId}`, method: 'DELETE', credentials: authUser });
+            const response = await api({ path: `courses/${courseId}`, method: "DELETE", credentials: authUser });
             // if everything is ok, route user to home once DELETE has occured
             if (response.status === 204) {
                 navigate("/", { replace: true });
-                // if not found, send to not found route
+            // if not found, send to not found route
             } else if (response.status === 404) {
                 navigate("/notfound", { replace: true });
-                // otherwise send to error route
+            // otherwise send to error route
             } else {
                 navigate("/error", { replace: true });
             }
@@ -117,7 +117,7 @@ const CourseDetail = () => {
             <>
                 <h3 className="course--detail--title">Materials Needed</h3>
                 {materialsNeeded ? (
-                       <Markdown className={"course--detail--list"}>{materialsNeeded}</Markdown>
+                    <Markdown className={"course--detail--list"}>{materialsNeeded}</Markdown>
                 ) : null}
             </>
         )
