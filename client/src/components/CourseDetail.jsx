@@ -117,7 +117,9 @@ const CourseDetail = () => {
             <>
                 <h3 className="course--detail--title">Materials Needed</h3>
                 {materialsNeeded ? (
-                    <Markdown className={"course--detail--list"}>{materialsNeeded}</Markdown>
+                    <Markdown components={{
+                        ul: ({ node, ...props }) => <ul className="course--detail--list" {...props} />
+                    }}>{materialsNeeded}</Markdown>
                 ) : null}
             </>
         )
