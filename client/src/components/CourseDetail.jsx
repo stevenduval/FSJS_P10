@@ -2,6 +2,7 @@ import { useContext, useEffect, useRef, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { api } from "../utils/apiHelper";
 import UserContext from "../context/UserContext";
+import Markdown from 'react-markdown'
 
 const CourseDetail = () => {
     // ref for useEffect to ensure it does not execute on re-render
@@ -96,7 +97,7 @@ const CourseDetail = () => {
     // local Description component
     const Description = () => {
         return (
-            description ? description.split(/\n\n/).map((desc, index) => <p key={index}>{desc}</p>) : null
+            description ? <Markdown>{description}</Markdown> : null
         )
     };
 
@@ -116,9 +117,7 @@ const CourseDetail = () => {
             <>
                 <h3 className="course--detail--title">Materials Needed</h3>
                 {materialsNeeded ? (
-                    <ul className="course--detail--list" key={courseId}>
-                        {materialsNeeded.replaceAll("* ", "").split(/\n/).flatMap((material, index) => material && material ? <li key={index}>{material}</li> : [])}
-                    </ul>
+                       <Markdown className={"course--detail--list"}>{materialsNeeded}</Markdown>
                 ) : null}
             </>
         )
