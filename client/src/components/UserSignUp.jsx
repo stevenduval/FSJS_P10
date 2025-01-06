@@ -39,7 +39,7 @@ const UserSignUp = () => {
             // if everything is as expected
             if (response.status === 201) {
                 // sign the user in via User Context signIn action
-                await actions.signIn({ emailAddress: user.emailAddress, password: user.password });
+                await actions.signIn({ emailAddress: body.emailAddress, password: body.password });
                 // navigate to home page 
                 navigate("/", { replace: true })
                 // if validation error, await response and set errors 

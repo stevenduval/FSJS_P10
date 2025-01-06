@@ -27,9 +27,9 @@ const App = () => {
                     <Route path="courses/create" element={ <CreateCourse /> } />
                     <Route path="courses/:id/update" element={ <UpdateCourse /> } />
                 </Route>
-                <Route path="notfound" element={ <NotFound /> } />
                 <Route path="forbidden" element={ <Forbidden /> } />
                 <Route path="error" element={ <UnhandledError/>} />
+                <Route path="*" element={ <NotFound /> } />
             </Routes>
         </>
     )

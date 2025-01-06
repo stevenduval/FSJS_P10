@@ -26,7 +26,7 @@ const UserSignIn = () => {
         event.preventDefault();
 
         // set from location to use after user is signed in
-        let from = location.state.from || "/";
+        let from = location?.state?.from || "/";
 
         // credentials to validate user
         const credentials = {

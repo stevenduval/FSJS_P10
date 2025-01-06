@@ -30,7 +30,7 @@ const UpdateCourse = () => {
     const [errors, setErrors] = useState([]);
 
     // destructuring course variables
-    const { userId, title, description, estimatedTime, materialsNeeded } = course;
+    const { title, description, estimatedTime, materialsNeeded } = course;
 
     // api call to retreive Courses
     const fetchData = async () => {
